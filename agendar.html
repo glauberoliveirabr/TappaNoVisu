@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Escolha serviço, profissional, dia e horário e confirme seu agendamento.">
+  <title>Agendar · tappaNoVisu</title>
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&amp;family=Figtree:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/tema.js"></script>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo-site">
+    <div class="container topo-site__barra">
+      <a class="marca" href="index.html"><span class="marca__tapa">tappa</span>NoVisu</a>
+      <button class="botao-icone tema-btn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span class="tema-btn__texto">Tema escuro</span></button>
+      <button class="botao-icone menu-btn" type="button" aria-expanded="false" aria-controls="menu-principal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</button>
+      <nav id="menu-principal" class="nav" aria-label="Principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="agendar.html" aria-current="page">Agendar</a></li>
+          <li><a href="agenda.html">Meus agendamentos</a></li>
+          <li><a href="entrar.html" data-link-entrar>Entrar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <div class="container">
+      <h1 id="titulo-agendar">Escolha seu atendimento</h1>
+      <ol class="etapas" aria-label="Etapas do agendamento">
+        <li aria-current="step" data-etapa="1">1. Escolher</li>
+        <li data-etapa="2">2. Seus dados</li>
+        <li data-etapa="3">3. Confirmar</li>
+      </ol>
+
+      <form class="form-agendar" id="form-agendar" aria-labelledby="titulo-agendar">
+        <div class="formulario">
+          <div class="resumo-erros" id="resumo-erros" role="alert" tabindex="-1"></div>
+
+          <section class="formulario" aria-labelledby="titulo-escolha">
+            <h2 id="titulo-escolha" class="sr-only">Serviço, profissional e horário</h2>
+            <div class="campo">
+              <label for="servico">Serviço</label>
+              <select class="entrada" id="servico" name="servico" required aria-describedby="erro-servico"></select>
+              <p class="msg-erro" id="erro-servico"></p>
+            </div>
+            <fieldset class="campo">
+              <legend>Dia</legend>
+              <div class="opcoes opcoes--dias" id="dias"></div>
+            </fieldset>
+            <fieldset class="campo" aria-describedby="erro-hora">
+              <legend>Horário <span class="mudo" id="dia-escolhido"></span></legend>
+              <div class="opcoes opcoes--horas" id="horas"></div>
+              <div class="legenda" aria-hidden="true"><span><i></i>Livre</span><span><i class="ind"></i>Ocupado ou fechado</span><span><i class="sel"></i>Escolhido</span></div>
+              <p class="msg-erro" id="erro-hora"></p>
+            </fieldset>
+            <p class="relogio" id="relogio" hidden></p>
+          </section>
+
+          <section class="formulario" aria-labelledby="titulo-dados">
+            <h2 id="titulo-dados">Seus dados</h2>
+            <div class="campo">
+              <label for="nome">Nome completo</label>
+              <input class="entrada" id="nome" name="nome" type="text" autocomplete="name" required minlength="5" aria-describedby="erro-nome">
+              <p class="msg-erro" id="erro-nome"></p>
+            </div>
+            <div class="campo">
+              <label for="celular">Celular com DDD</label>
+              <input class="entrada" id="celular" name="celular" type="tel" inputmode="tel" autocomplete="tel" required pattern="\(?\d{2}\)?\s?9?\d{4}-?\d{4}" placeholder="(61) 99999-1234" aria-describedby="ajuda-celular erro-celular">
+              <span class="ajuda" id="ajuda-celular">Usado só para lembretes do agendamento.</span>
+              <p class="msg-erro" id="erro-celular"></p>
+            </div>
+            <div class="campo">
+              <label for="email">E-mail</label>
+              <input class="entrada" id="email" name="email" type="email" autocomplete="email" required aria-describedby="erro-email">
+              <p class="msg-erro" id="erro-email"></p>
+            </div>
+            <fieldset class="campo">
+              <legend>Como você quer pagar?</legend>
+              <div class="opcoes" id="pagamentos">
+                <div class="opcao opcao--pagamento"><input type="radio" name="pagamento" id="pag-local" value="local" checked><label for="pag-local"><span>Pagar no salão<small>No dia do atendimento</small></span></label></div>
+                <div class="opcao opcao--pagamento"><input type="radio" name="pagamento" id="pag-cartao" value="cartao"><label for="pag-cartao"><span>Cartão de crédito<small>Cobrado ao confirmar</small></span></label></div>
+                <div class="opcao opcao--pagamento"><input type="radio" name="pagamento" id="pag-pix" value="pix"><label for="pag-pix"><span>Pix<small>Você copia o código e paga no app do seu banco</small></span></label></div>
+              </div>
+            </fieldset>
+            <div class="campo">
+              <label for="obs">Observação para o profissional (opcional)</label>
+              <textarea class="entrada" id="obs" name="obs" maxlength="300" aria-describedby="ajuda-obs"></textarea>
+              <span class="ajuda" id="ajuda-obs">Até 300 caracteres.</span>
+            </div>
+            <div class="campo">
+              <div class="check">
+                <input id="politica" name="politica" type="checkbox" required aria-describedby="erro-politica">
+                <label for="politica">Li a política de cancelamento: grátis até 24 horas antes do horário.</label>
+              </div>
+              <p class="msg-erro" id="erro-politica"></p>
+            </div>
+          </section>
+        </div>
+
+        <aside class="form-agendar__resumo cartao" aria-labelledby="titulo-resumo">
+          <h2 id="titulo-resumo">Resumo</h2>
+          <p id="resumo-texto" class="mudo">Escolha um serviço, um dia e um horário.</p>
+          <div class="valores">
+            <div><span>Serviço</span><span id="valor-servico">R$ 0,00</span></div>
+            <div><span>Taxa do aplicativo</span><span>R$ 0,00</span></div>
+            <div class="total"><span>Total</span><span id="valor-total">R$ 0,00</span></div>
+          </div>
+          <button class="btn btn--pri btn--bloco secao" type="submit" id="botao-confirmar">Confirmar agendamento</button>
+        </aside>
+      </form>
+
+      <section class="cartao" id="confirmacao" hidden tabindex="-1" aria-labelledby="titulo-confirmacao">
+        <div class="sucesso" aria-hidden="true">✓</div>
+        <h2 id="titulo-confirmacao">Tudo certo, horário garantido</h2>
+        <p>Código da reserva <span class="codigo" id="codigo-reserva"></span></p>
+        <p id="confirmacao-texto"></p>
+        <div class="agendamento__acoes">
+          <a class="btn btn--pri" href="agenda.html">Ver meus agendamentos</a>
+          <a class="btn btn--sec" href="index.html">Voltar ao início</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <div class="container rodape__grade">
+      <section aria-labelledby="rodape-sobre">
+        <h2 id="rodape-sobre">tappaNoVisu</h2>
+        <p>Agendamento de salões de beleza e barbearias: encontre, marque, lembre e remarque sem trocar mensagens.</p>
+        <p>Projeto acadêmico, ADS/CEUB, <span data-ano>2026</span>.</p>
+      </section>
+      <nav aria-labelledby="rodape-nav">
+        <h2 id="rodape-nav">Navegação</h2>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="agendar.html">Agendar</a></li>
+          <li><a href="agenda.html">Meus agendamentos</a></li>
+          <li><a href="entrar.html">Entrar</a></li>
+        </ul>
+      </nav>
+      <section aria-labelledby="rodape-grupo">
+        <h2 id="rodape-grupo">Grupo Ifood da Estética</h2>
+        <ul>
+          <li>Alex Perissê</li>
+          <li>Arthur Bradley</li>
+          <li>Glauber Oliveira</li>
+          <li>Luis Ernane</li>
+        </ul>
+      </section>
+    </div>
+  </footer>
+
+  <script src="js/dados.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/agendar.js"></script>
+</body>
+</html>

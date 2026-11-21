@@ -1,0 +1,64 @@
+/* ============================================================
+   Componente "Seu próximo horário" (index.html)
+
+   Na página ele é feito com Tailwind (classes com prefixo tw-).
+   Abaixo, o MESMO componente em CSS puro, classe por classe,
+   para mostrar o que o framework gera por nós.
+   Este arquivo NÃO é carregado pelo site: é material de estudo.
+   ============================================================ */
+
+/*
+.proximo {
+  border-radius: 1rem;               // tw-rounded-2xl
+  background: #4A1F6B;               // tw-bg-[#4A1F6B]
+  color: #FFFFFF;                    // tw-text-white
+  padding: 1.25rem;                  // tw-p-5
+  display: flex;                     // tw-flex
+  flex-direction: column;            // tw-flex-col
+  gap: 1rem;                         // tw-gap-4
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1),
+              0 4px 6px -4px rgb(0 0 0 / .1);   // tw-shadow-lg
+}
+
+.proximo__rotulo {
+  margin: 0;                         // tw-m-0
+  font-size: .875rem;                // tw-text-sm
+  line-height: 1.25rem;
+  opacity: .8;                       // tw-opacity-80
+}
+
+.proximo__titulo {
+  margin: 0;                         // tw-m-0
+  font-size: 1.25rem;                // tw-text-xl
+  line-height: 1.75rem;
+  font-weight: 700;                  // tw-font-bold
+}
+
+.proximo__quando {
+  margin: 0;                         // tw-m-0
+  opacity: .9;                       // tw-opacity-90
+}
+
+.proximo__acao {
+  display: inline-flex;              // tw-inline-flex
+  align-items: center;               // tw-items-center
+  justify-content: center;           // tw-justify-center
+  min-height: 48px;                  // tw-min-h-[48px]
+  padding: .75rem 1.25rem;           // tw-px-5 tw-py-3
+  border-radius: .75rem;             // tw-rounded-xl
+  background: #FFFFFF;               // tw-bg-white
+  color: #4A1F6B;                    // tw-text-[#4A1F6B]
+  font-weight: 700;                  // tw-font-bold
+  text-decoration: none;             // tw-no-underline
+}
+.proximo__acao:hover { background: #F3F4F6; }   // hover:tw-bg-gray-100
+
+// md: (a partir de 768px) o card vira uma linha
+@media (min-width: 768px) {
+  .proximo {
+    flex-direction: row;             // md:tw-flex-row
+    align-items: center;             // md:tw-items-center
+    justify-content: space-between;  // md:tw-justify-between
+  }
+}
+*/

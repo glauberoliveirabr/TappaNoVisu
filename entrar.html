@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Entre na sua conta ou crie uma conta de cliente.">
+  <title>Entrar · tappaNoVisu</title>
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&amp;family=Figtree:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/tema.js"></script>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo-site">
+    <div class="container topo-site__barra">
+      <a class="marca" href="index.html"><span class="marca__tapa">tappa</span>NoVisu</a>
+      <button class="botao-icone tema-btn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span class="tema-btn__texto">Tema escuro</span></button>
+      <button class="botao-icone menu-btn" type="button" aria-expanded="false" aria-controls="menu-principal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</button>
+      <nav id="menu-principal" class="nav" aria-label="Principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="agendar.html">Agendar</a></li>
+          <li><a href="agenda.html">Meus agendamentos</a></li>
+          <li><a href="entrar.html" aria-current="page" data-link-entrar>Entrar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <div class="container">
+      <h1>Entre ou crie sua conta</h1>
+      <p class="mudo">Conta de demonstração: giovanna@exemplo.com, senha tappa2026.</p>
+      <div class="duas-colunas">
+        <section class="cartao" aria-labelledby="titulo-entrar">
+          <h2 id="titulo-entrar">Já tenho conta</h2>
+          <form class="formulario" id="form-entrar">
+            <div class="campo">
+              <label for="entrar-email">E-mail</label>
+              <input class="entrada" id="entrar-email" type="email" autocomplete="email" required aria-describedby="erro-entrar-email">
+              <p class="msg-erro" id="erro-entrar-email"></p>
+            </div>
+            <div class="campo">
+              <label for="entrar-senha">Senha</label>
+              <div class="com-botao">
+                <input class="entrada" id="entrar-senha" type="password" autocomplete="current-password" required aria-describedby="erro-entrar-senha">
+                <button class="btn btn--sec" type="button" data-mostrar="entrar-senha" aria-pressed="false">Mostrar</button>
+              </div>
+              <p class="msg-erro" id="erro-entrar-senha"></p>
+            </div>
+            <p class="msg-erro" id="erro-entrar" role="alert"></p>
+            <button class="btn btn--pri" type="submit">Entrar</button>
+          </form>
+        </section>
+
+        <section class="cartao" aria-labelledby="titulo-criar">
+          <h2 id="titulo-criar">Criar conta de cliente</h2>
+          <form class="formulario" id="form-criar">
+            <div class="campo">
+              <label for="criar-nome">Nome completo</label>
+              <input class="entrada" id="criar-nome" type="text" autocomplete="name" required minlength="5" aria-describedby="erro-criar-nome">
+              <p class="msg-erro" id="erro-criar-nome"></p>
+            </div>
+            <div class="campo">
+              <label for="criar-email">E-mail</label>
+              <input class="entrada" id="criar-email" type="email" autocomplete="email" required aria-describedby="erro-criar-email">
+              <p class="msg-erro" id="erro-criar-email"></p>
+            </div>
+            <div class="campo">
+              <label for="criar-senha">Senha</label>
+              <span class="ajuda" id="ajuda-criar-senha">Mínimo de 8 caracteres, com letras e números.</span>
+              <div class="com-botao">
+                <input class="entrada" id="criar-senha" type="password" autocomplete="new-password" required minlength="8" pattern="(?=.*[A-Za-z])(?=.*\d).{8,}" aria-describedby="ajuda-criar-senha erro-criar-senha">
+                <button class="btn btn--sec" type="button" data-mostrar="criar-senha" aria-pressed="false">Mostrar</button>
+              </div>
+              <p class="msg-erro" id="erro-criar-senha"></p>
+            </div>
+            <div class="campo">
+              <div class="check">
+                <input id="criar-termos" type="checkbox" required aria-describedby="erro-criar-termos">
+                <label for="criar-termos">Li e aceito os Termos de uso e a Política de privacidade.</label>
+              </div>
+              <p class="msg-erro" id="erro-criar-termos"></p>
+            </div>
+            <button class="btn btn--pri" type="submit">Criar conta</button>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <div class="container rodape__grade">
+      <section aria-labelledby="rodape-sobre">
+        <h2 id="rodape-sobre">tappaNoVisu</h2>
+        <p>Agendamento de salões de beleza e barbearias: encontre, marque, lembre e remarque sem trocar mensagens.</p>
+        <p>Projeto acadêmico, ADS/CEUB, <span data-ano>2026</span>.</p>
+      </section>
+      <nav aria-labelledby="rodape-nav">
+        <h2 id="rodape-nav">Navegação</h2>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="agendar.html">Agendar</a></li>
+          <li><a href="agenda.html">Meus agendamentos</a></li>
+          <li><a href="entrar.html">Entrar</a></li>
+        </ul>
+      </nav>
+      <section aria-labelledby="rodape-grupo">
+        <h2 id="rodape-grupo">Grupo Ifood da Estética</h2>
+        <ul>
+          <li>Alex Perissê</li>
+          <li>Arthur Bradley</li>
+          <li>Glauber Oliveira</li>
+          <li>Luis Ernane</li>
+        </ul>
+      </section>
+    </div>
+  </footer>
+
+  <script src="js/dados.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/entrar.js"></script>
+</body>
+</html>

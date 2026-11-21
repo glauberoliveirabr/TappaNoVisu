@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Encontre salões e profissionais de beleza perto de você e agende em poucos toques.">
+  <title>Início · tappaNoVisu</title>
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&amp;family=Figtree:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="js/tailwind.config.js"></script>
+  <script src="js/tema.js"></script>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo-site">
+    <div class="container topo-site__barra">
+      <a class="marca" href="index.html"><span class="marca__tapa">tappa</span>NoVisu</a>
+      <button class="botao-icone tema-btn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span class="tema-btn__texto">Tema escuro</span></button>
+      <button class="botao-icone menu-btn" type="button" aria-expanded="false" aria-controls="menu-principal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</button>
+      <nav id="menu-principal" class="nav" aria-label="Principal">
+        <ul>
+          <li><a href="index.html" aria-current="page">Início</a></li>
+          <li><a href="agendar.html">Agendar</a></li>
+          <li><a href="agenda.html">Meus agendamentos</a></li>
+          <li><a href="entrar.html" data-link-entrar>Entrar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <div class="container">
+      <section class="hero" aria-labelledby="titulo-hero">
+        <div class="hero__texto">
+          <h1 id="titulo-hero">Bora dar aquele tapa no visual?</h1>
+          <p>Encontre quem cuida bem de você, marque em poucos toques e nunca mais esqueça o horário.</p>
+          <form class="busca" id="form-busca" role="search">
+            <label class="rotulo" for="campo-busca">O que você procura?</label>
+            <div class="busca__linha">
+              <input class="entrada" id="campo-busca" type="search" name="q" placeholder="Salão, profissional ou serviço" autocomplete="off">
+              <button class="btn btn--pri" type="submit">Buscar</button>
+            </div>
+          </form>
+        </div>
+        <img class="hero__imagem" src="assets/img/hero.svg" width="480" height="400" alt="Ilustração de uma cliente sorrindo com o cabelo novo, cercada por tesoura, pente e brilhos">
+      </section>
+
+      <!-- Componente feito com Tailwind (prefixo tw-).
+           O equivalente em CSS puro está comentado em css/proximo-horario.css -->
+      <section class="secao tw-rounded-2xl tw-bg-[#4A1F6B] tw-text-white tw-p-5 tw-flex tw-flex-col tw-gap-4 tw-shadow-lg md:tw-flex-row md:tw-items-center md:tw-justify-between" id="proximo" aria-labelledby="proximo-titulo">
+        <div>
+          <p class="tw-m-0 tw-text-sm tw-opacity-80" data-proximo="rotulo">Seu próximo horário</p>
+          <h2 class="tw-m-0 tw-text-xl tw-font-bold" id="proximo-titulo" data-proximo="titulo">Carregando seu horário</h2>
+          <p class="tw-m-0 tw-opacity-90" data-proximo="quando"></p>
+        </div>
+        <a class="tw-inline-flex tw-items-center tw-justify-center tw-min-h-[48px] tw-px-5 tw-py-3 tw-rounded-xl tw-bg-white tw-text-[#4A1F6B] tw-font-bold tw-no-underline hover:tw-bg-gray-100" href="agenda.html" data-proximo="acao">Ver meus agendamentos</a>
+      </section>
+
+      <section class="secao" id="buscar" aria-labelledby="titulo-buscar">
+        <div class="secao__cabeca">
+          <h2 id="titulo-buscar">Salões e profissionais perto de você</h2>
+          <p class="mudo" id="contagem" aria-live="polite"></p>
+        </div>
+        <div class="controles">
+          <fieldset class="segmento">
+            <legend class="sr-only">Mostrar</legend>
+            <input type="radio" name="tipo" id="tipo-todos" value="todos" checked><label for="tipo-todos">Todos</label>
+            <input type="radio" name="tipo" id="tipo-saloes" value="salao"><label for="tipo-saloes">Salões</label>
+            <input type="radio" name="tipo" id="tipo-profs" value="prof"><label for="tipo-profs">Profissionais</label>
+          </fieldset>
+          <div class="campo-inline">
+            <label for="distancia">Distância</label>
+            <select class="entrada" id="distancia">
+              <option value="99">Qualquer distância</option>
+              <option value="1">Até 1 km</option>
+              <option value="3">Até 3 km</option>
+              <option value="5">Até 5 km</option>
+            </select>
+          </div>
+          <div class="campo-inline">
+            <label for="ordenar">Ordenar por</label>
+            <select class="entrada" id="ordenar">
+              <option value="perto">Mais perto</option>
+              <option value="nota">Melhor nota</option>
+              <option value="preco">Menor preço</option>
+            </select>
+          </div>
+        </div>
+        <ul class="grade-cartoes" id="resultados"></ul>
+        <noscript><p>Ative o JavaScript para ver a lista de salões.</p></noscript>
+      </section>
+
+      <section class="secao" aria-labelledby="titulo-como">
+        <h2 id="titulo-como">Como funciona</h2>
+        <ol class="passos">
+          <li><div><h3>Encontre</h3><p>Busque por serviço, salão ou profissional e compare notas, preços e distância.</p></div></li>
+          <li><div><h3>Agende</h3><p>Escolha o dia e um horário realmente livre. Sem esperar resposta no WhatsApp.</p></div></li>
+          <li><div><h3>Lembre e remarque</h3><p>Receba lembretes e remarque ou cancele pelo app quando precisar.</p></div></li>
+        </ol>
+      </section>
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <div class="container rodape__grade">
+      <section aria-labelledby="rodape-sobre">
+        <h2 id="rodape-sobre">tappaNoVisu</h2>
+        <p>Agendamento de salões de beleza e barbearias: encontre, marque, lembre e remarque sem trocar mensagens.</p>
+        <p>Projeto acadêmico, ADS/CEUB, <span data-ano>2026</span>.</p>
+      </section>
+      <nav aria-labelledby="rodape-nav">
+        <h2 id="rodape-nav">Navegação</h2>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="agendar.html">Agendar</a></li>
+          <li><a href="agenda.html">Meus agendamentos</a></li>
+          <li><a href="entrar.html">Entrar</a></li>
+        </ul>
+      </nav>
+      <section aria-labelledby="rodape-grupo">
+        <h2 id="rodape-grupo">Grupo Ifood da Estética</h2>
+        <ul>
+          <li>Alex Perissê</li>
+          <li>Arthur Bradley</li>
+          <li>Glauber Oliveira</li>
+          <li>Luis Ernane</li>
+        </ul>
+      </section>
+    </div>
+  </footer>
+
+  <script src="js/dados.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/busca.js"></script>
+</body>
+</html>

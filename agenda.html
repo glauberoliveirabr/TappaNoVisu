@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Consulte, remarque e cancele seus agendamentos.">
+  <title>Meus agendamentos · tappaNoVisu</title>
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&amp;family=Figtree:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/tema.js"></script>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo-site">
+    <div class="container topo-site__barra">
+      <a class="marca" href="index.html"><span class="marca__tapa">tappa</span>NoVisu</a>
+      <button class="botao-icone tema-btn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span class="tema-btn__texto">Tema escuro</span></button>
+      <button class="botao-icone menu-btn" type="button" aria-expanded="false" aria-controls="menu-principal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</button>
+      <nav id="menu-principal" class="nav" aria-label="Principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="agendar.html">Agendar</a></li>
+          <li><a href="agenda.html" aria-current="page">Meus agendamentos</a></li>
+          <li><a href="entrar.html" data-link-entrar>Entrar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <div class="container">
+      <div class="secao__cabeca">
+        <h1>Meus agendamentos</h1>
+        <a class="btn btn--pri" href="agendar.html">Novo agendamento</a>
+      </div>
+      <div class="controles">
+        <fieldset class="segmento">
+          <legend class="sr-only">Mostrar agendamentos</legend>
+          <input type="radio" name="filtro" id="f-proximos" value="proximos" checked><label for="f-proximos">Próximos</label>
+          <input type="radio" name="filtro" id="f-historico" value="historico"><label for="f-historico">Histórico</label>
+          <input type="radio" name="filtro" id="f-todos" value="todos"><label for="f-todos">Todos</label>
+        </fieldset>
+      </div>
+      <p class="sr-only" id="contagem-agenda" aria-live="polite"></p>
+      <ul class="lista-agenda" id="lista-agenda"></ul>
+
+      <section class="secao cartao" aria-labelledby="titulo-lembretes">
+        <h2 id="titulo-lembretes">Não perca seu horário</h2>
+        <button class="interruptor" type="button" role="switch" aria-checked="true" id="lembretes">
+          <span class="interruptor__texto"><strong>Lembretes no celular</strong><span class="mudo">24 horas e 1 hora antes de cada atendimento</span></span>
+          <span class="trilho" aria-hidden="true"></span>
+        </button>
+      </section>
+    </div>
+  </main>
+
+  <dialog id="dialogo-cancelar" aria-labelledby="titulo-cancelar">
+    <form method="dialog">
+      <h2 id="titulo-cancelar">Cancelar agendamento?</h2>
+      <p id="texto-cancelar"></p>
+      <div class="campo">
+        <label for="motivo">Motivo (opcional)</label>
+        <select class="entrada" id="motivo">
+          <option value="">Prefiro não informar</option>
+          <option>Imprevisto</option>
+          <option>Conflito de horário</option>
+          <option>Vou agendar outro dia</option>
+        </select>
+      </div>
+      <div class="dialogo__acoes">
+        <button class="btn btn--perigo" value="confirmar">Cancelar agendamento</button>
+        <button class="btn btn--sec" value="manter" autofocus>Manter agendamento</button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer class="rodape">
+    <div class="container rodape__grade">
+      <section aria-labelledby="rodape-sobre">
+        <h2 id="rodape-sobre">tappaNoVisu</h2>
+        <p>Agendamento de salões de beleza e barbearias: encontre, marque, lembre e remarque sem trocar mensagens.</p>
+        <p>Projeto acadêmico, ADS/CEUB, <span data-ano>2026</span>.</p>
+      </section>
+      <nav aria-labelledby="rodape-nav">
+        <h2 id="rodape-nav">Navegação</h2>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="agendar.html">Agendar</a></li>
+          <li><a href="agenda.html">Meus agendamentos</a></li>
+          <li><a href="entrar.html">Entrar</a></li>
+        </ul>
+      </nav>
+      <section aria-labelledby="rodape-grupo">
+        <h2 id="rodape-grupo">Grupo Ifood da Estética</h2>
+        <ul>
+          <li>Alex Perissê</li>
+          <li>Arthur Bradley</li>
+          <li>Glauber Oliveira</li>
+          <li>Luis Ernane</li>
+        </ul>
+      </section>
+    </div>
+  </footer>
+
+  <script src="js/dados.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/agenda.js"></script>
+</body>
+</html>
